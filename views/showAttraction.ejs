@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <%- include("../partials/header.ejs")%>
+  <body>
+    <%- include("../partials/nav.ejs")%>
+    <h2>Resources for Attractions</h2>
+    <div class="attraction content">
+      <h3 class="title">
+        <a href="http://www.<%= attraction.webpage %>"><%= attraction.name %></a>
+      </h3>
+
+      <p class="phone"><%= attraction.phone %></p>
+
+      <p class="street"><%= attraction.street %></p>
+      <p class="city">
+        <%= attraction.city %>, <span class="state"><%= attraction.state %></span>
+        <span class="zip"><%= attraction.zip %></span>
+      </p>
+      <hr />
+      <a class="delete download-btn" data-attraction="<%= attraction._id %>">DELETE</a>
+    </div>
+    <%- include("../partials/footer.ejs")%>
+    <script>
+      const deleteBtn = document.querySelector(".delete");
+      deleteBtn.addEventListener("click", (e) => {
+        const endpoint = `/attraction/${deleteBtn.dataset.attraction}`;
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            response.json();
+          })
+          .then((data) => (window.location.href = "/college"))
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>

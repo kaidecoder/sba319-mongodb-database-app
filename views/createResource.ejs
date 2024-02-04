@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/header.ejs")%>
+  <body>
+    <%- include("../partials/nav.ejs")%>
+    <div class="create-resource content">
+      <form action="/attraction" method="POST">
+        <p>Change the action on the create page for each resource</p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="webpage">Webpage: </label>
+        <input type="text" id="webpage" name="webpage" required />
+        <label for="phone">Phone: </label>
+        <input type="text" id="phone" name="phone" required />
+        <label for="Street">Street:</label>
+        <input type="text" id="street" name="street" required />
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required />
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required />
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" name="zip" required />
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required />
+        <label for="years">Years:</label>
+        <div class="radio">
+          <input type="radio" id="years" name="years" /> 2
+          <input type="radio" id="years" name="years"  /> 4
+        </div>
+        <label for="costAfterAid">Cost After Aid:</label>
+        <input type="number" id="costAfterAid" name="costAfterAid" />
+        <label for="graduationRate">Graduation Rate:</label>
+        <input type="number" id="graduationRate" name="graduationRate" />
+        <label for="acceptanceRate">Acceptance Rate:</label>
+        <input type="number" id="acceptanceRate" name="acceptanceRate" />
+        <label for="sportingAffiliations">Sporting Affiliations:</label>
+        <input type="text" id="sportingAffiliations" name="sportingAffiliations"  />
+        <button class="download-btn">Submit</button>
+      </form>
+    </div>
+    <%- include("../partials/footer.ejs")%>
+    
+  </body>
+</html>
