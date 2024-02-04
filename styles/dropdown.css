@@ -14,7 +14,7 @@ ul li a{
     text-decoration: none;
     font-size: 20px;
 }
-/* put items into the ul */
+
 ul li ul.dropdown li{
     display: block;
 }

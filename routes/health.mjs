@@ -29,58 +29,45 @@ router.get("/health", async (req, res) => {
     }
   });
 
-//get one college - send to showpage
-router.get("/college/:id", async (req, res) => {
+//get one health - send to showpage
+router.get("/health/:id", async (req, res) => {
     const id = req.params.id;
     console.log(id);
-    await College.findById(id)
+    await Health.findById(id)
       .then((result) => {
         console.log(result);
-        res.render("showCollege", { college: result });
+        res.render("showHealth", { health: result });
       })
       .catch((error) => {
         console.log(error);
       });
   });
   
-  //get one college - send to showpage
-  router.get("/college/:id", async (req, res) => {
+  
+  //delete a health item
+  router.delete("/health/:id", (req, res) => {
     const id = req.params.id;
-    console.log(id);
-    await College.findById(id)
+    Health.findByIdAndDelete(id)
       .then((result) => {
-        console.log(result);
-        res.render("showPage", { college: result });
+        res.json({ redirect: "/health" });
       })
       .catch((error) => {
         console.log(error);
       });
   });
   
-  //delete a college item
-  router.delete("/college/:id", (req, res) => {
-    const id = req.params.id;
-    College.findByIdAndDelete(id)
-      .then((result) => {
-        res.json({ redirect: "/college" });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
-  
-  //update a college item
-  router.patch("/college/:id", async (req, res) => {
+  //update a health item
+  router.patch("health/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const college = await College.findOneAndUpdate(
+      const health = await Health.findOneAndUpdate(
         { _id: new ObjectId(id) },
         req.body,
         { new: true }
       );
-      console.log(college);
+      console.log(health);
   
-      res.json({ college });
+      res.json({ health });
     } catch (error) {
       console.log(error);
     }

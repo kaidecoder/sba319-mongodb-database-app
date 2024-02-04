@@ -54,19 +54,6 @@ router.get("/college/:id", async (req, res) => {
     });
 });
 
-//get one college - send to showpage
-router.get("/college/:id", async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
-  await College.findById(id)
-    .then((result) => {
-      console.log(result);
-      res.render("showPage", { college: result });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
 
 //delete a college item
 router.delete("/college/:id", (req, res) => {
