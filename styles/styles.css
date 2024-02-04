@@ -200,3 +200,8 @@ a:hover:not(.site-title a){
 ul .dropdown li{
   display: flex;
 }
+
+/* #borderimg { 
+  border: 50px solid transparent;
+  padding: 130px;
+  border-image: url(../pexels-ylanite-koppens-776635.jpg) 130 round; */

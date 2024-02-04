@@ -1,11 +1,12 @@
 import express from "express"
+import mongoose from "mongoose"
 import ("./db/mongoose.mjs")
 const app = express()
 import collegeRouter from "./routes/colleges.mjs"
 import attractionRouter from "./routes/attractions.mjs"
 import morgan from "morgan"
 import bodyParser from "body-parser"
-import jobsRouter from "./script.js"
+import healthRouter from "./routes/health.mjs"
 
 //view engine
 app.set("view engine", "ejs");
@@ -22,7 +23,7 @@ app.use(express.static("./images"));
 
 app.use(collegeRouter)
 app.use(attractionRouter)
-app.use(jobsRouter)
+app.use(healthRouter)
 
 
 

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const attractionSchema = mongoose.Schema(
+const healthSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -39,6 +39,6 @@ const attractionSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const Attractions = mongoose.model("Attractions", attractionSchema);
+const Health = mongoose.model("Health", healthSchema);
 
-export default Attractions;
+export default Health;

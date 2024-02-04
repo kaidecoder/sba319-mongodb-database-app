@@ -26,7 +26,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #ccc;
+    background: url("../pexels-henry-&-co-1939485.jpg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 header {

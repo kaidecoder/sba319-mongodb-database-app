@@ -1,18 +1,13 @@
-POST http://localhost:3000/attraction HTTP/1.1
+POST http://localhost:3000/health HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Fenway Park",
-    "webpage": "www.tufts.edu",
-    "phone": "(617)627-5000",
-    "street": "419 Boston Avenue",
-    "city": "Medford",
+    "name": "Massachusetts General Hospital",
+    "webpage": "massgeneral.org",
+    "phone": "(617)726-8707",
+    "street": "55 Fruit Street",
+    "city": "Boston",
     "state": "MA",
-    "zip": "02155",
-    "description": "Tufts University is a private research university located in the Greater Boston area. The main campus is located in the Walnut Hill neighborhood of the towns of Medford and Somerville, Massachusetts, with additional facilities located in Boston and Grafton, Massachusetts, and in Talloires, France. It was founded in 1852 as Tufts College by Christian universalists who sought to provide a nonsectarian institution of higher learning. Tufts remained a small liberal arts college until the 1970s, when it transformed into a large research university offering several doctorates. Tufts offers over 90 undergraduate and 160 graduate programs across ten schools in the greater Boston area and Talloires, France.",
-    "years": "4",
-    "costAfterAid": "36000",
-    "graduationRate": "94",
-    "acceptanceRate": "11",
-    "sportingAffiliations": "NCAA Division III - NESCAC - NEISA"
+    "zip": "02114",
+    "description": "Massachusetts General Hospital (Mass General or MGH) is the original and largest teaching hospital of Harvard Medical School, Harvard University located in the West End neighborhood of Boston, Massachusetts.[4] Massachusetts General Hospital houses the world's largest hospital-based research program, the Mass General Research Institute, with an annual research budget of more than $1.2 billion in 2021.[5] It is the third-oldest general hospital in the United States with a patient capacity of 999 beds.[6] Along with Brigham and Women's Hospital, Mass General is a founding member of Mass General Brigham, formerly known as Partners HealthCare, the largest healthcare provider in Massachusetts. It is currently ranked among the best hospitals in the United States by U.S. News & World Report"
 }
