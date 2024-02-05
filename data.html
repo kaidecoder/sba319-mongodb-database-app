@@ -1,0 +1,51 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Client Page</title>
+  </head>
+  <body>
+    <h1>Client Page</h1>
+
+    <!-- Example form to collect data -->
+    <form id="dataForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="value">Value:</label>
+      <input type="number" id="value" name="value" required>
+
+      <button type="button" onclick="postData()">Submit Data</button>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        // Use JavaScript fetch to make client-side requests
+        let res = fetch("http://api.adzuna.com/v1/api/jobs/us/search/1?app_id=640789aa&app_key=804950c4953157bcce87e26ba7f050e0&results_per_page=20&what=javascript%20developer&content-type=application/json")
+          .then(response => response.json())
+          .then(data => {
+            async function postData() {
+        const name = document.getElementById("name").value;
+        const value = document.getElementById("value").value;
+
+        try {
+          const response = await fetch("/data", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ apiData: [{ name, value }] }),
+          });
+
+          if (response.ok) {
+            console.log("Data sent successfully!");
+            // Handle success, e.g., redirect or update UI
+          } else {
+            console.error("Error sending data:", response.status);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+          })
+        })
+    </script>
+</body>
+</html>

@@ -7,15 +7,16 @@ import attractionRouter from "./routes/attractions.mjs";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import healthRouter from "./routes/health.mjs";
+import dataRouter from "./routes/data.mjs"
 
 //view engine
 app.set("view engine", "ejs");
 
 app.use(morgan("dev"));
-// app.use(express.json())
-// app.use(express.urlencoded( {extended: true}))
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.json())
+app.use(express.urlencoded( {extended: true}))
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 app.use(express.static("./styles"));
 app.use(express.static("./images"));
@@ -24,6 +25,9 @@ app.use(collegeRouter);
 app.use(attractionRouter);
 app.use(healthRouter);
 
+
+
+
 //NOTE:  Set up the 404 Page
 app.use((req, res, next) => {
     const error = new Error("Not found");
@@ -31,7 +35,7 @@ app.use((req, res, next) => {
     error.status = 404;
     //forward the request and attach the error msg
     res.render("404");
-    next(error);
+    // next(error);
   });
   
   //this handles all kinds of errors, not just 404
@@ -43,6 +47,8 @@ app.use((req, res, next) => {
       },
     });
   });
+
+
 
 app.listen(3000, (req, res) => {
   console.log("app running on port 3000");

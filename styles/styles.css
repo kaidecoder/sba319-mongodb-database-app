@@ -221,6 +221,11 @@ input[type="radio"] {
   transform: scale(2);
 }
 
+input[type="text"] {
+  background-color: #d1d1d1;
+  font-size: larger;
+}
+
 p,
 .radio {
   color: whitesmoke;
