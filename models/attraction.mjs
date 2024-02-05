@@ -34,9 +34,8 @@ const attractionSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Attractions = mongoose.model("Attractions", attractionSchema);

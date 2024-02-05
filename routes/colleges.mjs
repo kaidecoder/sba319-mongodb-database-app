@@ -3,13 +3,27 @@ const router = express.Router();
 import College from "../models/college.mjs";
 import { ObjectId } from "mongodb";
 
+router.get("/about", (req, res) => {
+  res.render("about");
+});
+
+//quiz
+router.get("/quiz", (req, res) => {
+  res.render("quiz");
+});
+
+//trivia
+router.get("/trivia", (req, res) => {
+  res.render("trivia");
+});
+
 router.get("/help", (req, res) => {
   res.redirect("/college");
 });
 
 //create a new college  in the formNOTE: get?
 router.post("/create", (req, res) => {
-  res.render("create_data", { college : {} });
+  res.render("create_data", { college: {} });
 });
 
 //create an updated college  in the formNOTE: get?
@@ -41,13 +55,11 @@ router.post("/college", async (req, res) => {
 router.post("/update/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const updatedCollege = await College.findByIdAndUpdate(
-      id,
-      req.body,
-      { new: true }
-    );
+    const updatedCollege = await College.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     // res.render("create_data", { college: updatedCollege });
-    res.redirect("/college")
+    res.redirect("/college");
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Failed to update college" });
@@ -63,11 +75,9 @@ router.post("/create", (req, res) => {
 router.patch("/college/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const updatedCollege = await College.findByIdAndUpdate(
-      id,
-      req.body,
-      { new: true }
-    );
+    const updatedCollege = await College.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
 
     if (!updatedCollege) {
       return res.status(404).json({ error: "College not found" });
@@ -79,9 +89,6 @@ router.patch("/college/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to update college" });
   }
 });
-
-
-
 
 //get all colleges, or get college by zip
 router.get("/college", async (req, res) => {
@@ -123,10 +130,8 @@ router.delete("/college/:id", (req, res) => {
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).json({error: "Did not delete"})
+      res.status(500).json({ error: "Did not delete" });
     });
 });
-
-
 
 export default router;

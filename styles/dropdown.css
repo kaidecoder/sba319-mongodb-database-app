@@ -1,37 +1,33 @@
-
-ul{
-    list-style: none;
-
+ul {
+  list-style: none;
 }
-ul li{
-    display: inline-block;
-    position: relative;
-    padding: 0 20px;
+ul li {
+  display: inline-block;
+  position: relative;
+  padding: 0 20px;
 }
-ul li a{
-    display: block;
-    padding: 20px 20px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
+ul li a {
+  display: block;
+  padding: 20px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
 }
 
-ul li ul.dropdown li{
-    display: block;
+ul li ul.dropdown li {
+  display: block;
 }
 
-ul li ul.dropdown{
-    width: 100%;
-    background: black;
-    position: absolute;
-    z-index: 999;
-    display: none;
-
+ul li ul.dropdown {
+  width: 100%;
+  background: black;
+  position: absolute;
+  z-index: 999;
+  display: none;
 }
-ul li a:hover{
-    background: crimson;
-
+ul li a:hover {
+  background: crimson;
 }
-ul li:hover ul.dropdown{
-    display: block;
+ul li:hover ul.dropdown {
+  display: block;
 }

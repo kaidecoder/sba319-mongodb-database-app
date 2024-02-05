@@ -47,33 +47,31 @@ router.get("/health/:id", async (req, res) => {
 
 //delete a health item
 router.delete("/health/:id", (req, res) => {
-    const id = req.params.id;
-    Health.findByIdAndDelete(id)
-      .then((result) => {
-        res.json({ redirect: "/health" });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+  const id = req.params.id;
+  Health.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/health" });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 
 //update a health item
 router.patch("/health/:id", async (req, res) => {
-    try {
-      const id = req.params.id;
-      const health = await Health.findOneAndUpdate(
-        { _id: new ObjectId(id) },
-        req.body,
-        { new: true }
-      );
-      console.log(health);
-  
-      res.json({ health });
-    } catch (error) {
-      console.log(error);
-    }
-  });
+  try {
+    const id = req.params.id;
+    const health = await Health.findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      req.body,
+      { new: true },
+    );
+    console.log(health);
 
-
+    res.json({ health });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export default router;

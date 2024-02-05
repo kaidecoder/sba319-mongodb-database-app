@@ -51,7 +51,7 @@ const collegeSchema = mongoose.Schema(
       type: String,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Colleges = mongoose.model("Colleges", collegeSchema);

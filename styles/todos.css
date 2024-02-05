@@ -1,42 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
 
 :root {
-    --dark: #374151;
-    --darker: #1f2937;
-    --darkest: #111827;
-    --light: #eee;
-    --pink:  #ec4a99;
-    --purple: #8b5cf6;
-    --gray: #6b7280;
-    --continental-blue: #367bca;
-    --dark-blue:  #1d356d;
-    --yellow: ##dfbc1e;
-    --blue: #355c96;
-    --white: #fff;
+  --dark: #374151;
+  --darker: #1f2937;
+  --darkest: #111827;
+  --light: #eee;
+  --pink: #ec4a99;
+  --purple: #8b5cf6;
+  --gray: #6b7280;
+  --continental-blue: #367bca;
+  --dark-blue: #1d356d;
+  --yellow: ##dfbc1e;
+  --blue: #355c96;
+  --white: #fff;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Noto Serif", serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Serif", serif;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: url("../mathias-reding-3P9QzN5uF5Q-unsplash.jpg");
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url("../mathias-reding-3P9QzN5uF5Q-unsplash.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header {
-    padding: 2rem 1rem;
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
 }
-
