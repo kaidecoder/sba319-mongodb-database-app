@@ -2,30 +2,42 @@
 <html lang="en">
   <%- include("../partials/header.ejs")%>
   <body>
-    
     <%- include("../partials/nav.ejs")%>
-    <h2>College Resources</h2>
-    <div class="college content">
-        <div class=" content">
-              
-              <h3 class="title"><a href="http://www.<%= college.webpage %>"><%= college.name %></a></h3>
-  
-              <h3><a class="single" href="/college/<%= college._id %>">GET THIS</a></h3>
-  
-              <p class="phone"><%= college.phone %></p>
-  
-              <p class="street"><%= college.street %></p>
-              <p class="city"><%= college.city %>, <span class="state"><%= college.state %></span> <span class="zip"><%= college.zip %></span></p>
-              <p class="description"><%= college.description %></p>
-              <p class="description"><%= college.years %></p>
-              <p class="years"><%= college.costAfterAid %></p>
-              <p class="years"><%= college.graduationRate %></p>
-              <p class="years"><%= college.acceptanceRate %></p>
-              <p class="sports"><%= college.sportingAffiliations %></p>
-              <hr>
-          
+    <div class="create-resource content">
+      <form action="/update/<%= college._id %>" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= college.name %>" />
+        <label for="webpage">Webpage: </label>
+        <input type="text" id="webpage" name="webpage" value="<%= college.webpage %>" />
+        <label for="phone">Phone: </label>
+        <input type="text" id="phone" name="phone"  value="<%= college.phone %>"/>
+        <label for="Street">Street:</label>
+        <input type="text" id="street" name="street" value="<%= college.street %>" />
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"  value="<%= college.city %>"/>
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" value="<%= college.state %>" />
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" name="zip"  value="<%= college.zip %>"/>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="<%= college.description %>" />
+        <label for="years">Years:</label>
+        <div class="radio">
+          <input type="radio" id="years" name="years" value="<%= college.years %>"/> 2
+          <input type="radio" id="years" name="years" value="<%= college.years %>" /> 4
         </div>
-    
+        <label for="costAfterAid">Cost After Aid:</label>
+        <input type="text" id="costAfterAid" name="costAfterAid" value="<%= college.costAfterAid %>"/>
+        <label for="graduationRate">Graduation Rate:</label>
+        <input type="text" id="graduationRate" name="graduationRate" value="<%= college.graduationRate %>"/>
+        <label for="acceptanceRate">Acceptance Rate:</label>
+        <input type="text" id="acceptanceRate" name="acceptanceRate" value="<%= college.acceptanceRate %>"/>
+        <label for="sportingAffiliations">Sporting Affiliations:</label>
+        <input type="text" id="sportingAffiliations" name="sportingAffiliations"  value="<%= college.sportingAffiliations %>"/>
+        <button class="download-btn" type="submit">UPDATE INFO</button>
+      </form>
     </div>
+    <%- include("../partials/footer.ejs")%>
+    
   </body>
 </html>

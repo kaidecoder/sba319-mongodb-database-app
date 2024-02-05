@@ -38,6 +38,20 @@ router.post("/college", async (req, res) => {
   }
 });
 
+router.post("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const updatedCollege = await College.findByIdAndUpdate(
+      id,
+      req.body,
+      { new: true }
+    );
+    res.render("create_data", { college: updatedCollege });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to update college" });
+  }
+});
 
 
 
