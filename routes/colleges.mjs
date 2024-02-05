@@ -46,7 +46,8 @@ router.post("/update/:id", async (req, res) => {
       req.body,
       { new: true }
     );
-    res.render("create_data", { college: updatedCollege });
+    // res.render("create_data", { college: updatedCollege });
+    res.redirect("/college")
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Failed to update college" });
