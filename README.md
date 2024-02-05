@@ -1,5 +1,5 @@
 # SBA 319: MongoDB Database Application
-
+This project introduces users to resources in Boston like colleges, hospitals, and attractions, and builds upon the previous lesson that offered resources like housing, jobs, and food.  Each resource has routes - to create(/college, /attraction, /health), read(/college, /attraction, /health), delete(/college/:id, /attraction/:id, /health/:id), and update(/college/:id, /attraction/:id, /health/:id) data, using the browser, the rest-client extension in VSCode or using Postman.  All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button.  Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
 ## Introduction
 
 This assessment measures your understanding of MongoDB and your capability to implement its features in a practical manner. You have creative freedom in the topic, material, and purpose of the web application you will be developing, so have fun with it! However, remember to plan the scope of your project to the timeline you have been given.
