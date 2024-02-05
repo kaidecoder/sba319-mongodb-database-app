@@ -3,13 +3,18 @@ const router = express.Router();
 import College from "../models/college.mjs";
 import { ObjectId } from "mongodb";
 
-// router.get("/help", (req, res) => {
-//   render an image here maybe
-// })
+router.get("/help", (req, res) => {
+  res.redirect("/college");
+});
 
 //create a new college  in the formNOTE: get?
-router.get("/create", (req, res) => {
-  res.render("createResource");
+router.post("/create", (req, res) => {
+  res.render("create_data", { college : {} });
+});
+
+//create a new college  in the formNOTE: get?
+router.get("/update/:id", (req, res) => {
+  res.render("create_data");
 });
 
 //add a new college
@@ -22,6 +27,39 @@ router.post("/college", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
+
+
+
+//create an event
+router.post("/create", (req, res) => {
+  res.render("createResource", { event: {} });
+});
+
+// Update a college
+router.patch("/college/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updatedCollege = await College.findByIdAndUpdate(
+      id,
+      req.body,
+      { new: true }
+    );
+
+    if (!updatedCollege) {
+      return res.status(404).json({ error: "College not found" });
+    }
+
+    res.render("create_data", { college: updatedCollege });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to update college" });
+  }
+});
+
+
+
 
 //get all colleges, or get college by zip
 router.get("/college", async (req, res) => {
@@ -54,7 +92,6 @@ router.get("/college/:id", async (req, res) => {
     });
 });
 
-
 //delete a college item
 router.delete("/college/:id", (req, res) => {
   const id = req.params.id;
@@ -64,24 +101,10 @@ router.delete("/college/:id", (req, res) => {
     })
     .catch((error) => {
       console.log(error);
+      res.status(500).json({error: "Did not delete"})
     });
 });
 
-//update a college item
-router.patch("/college/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const college = await College.findOneAndUpdate(
-      { _id: new ObjectId(id) },
-      req.body,
-      { new: true }
-    );
-    console.log(college);
 
-    res.json({ college });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
 export default router;

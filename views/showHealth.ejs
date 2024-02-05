@@ -3,7 +3,7 @@
   <%- include("../partials/header.ejs")%>
   <body>
     <%- include("../partials/nav.ejs")%>
-    <h2>Resources for Health</h2>
+    <h2>Show Page for Health</h2>
     <div class="health content">
       <h3 class="title">
         <a href="http://www.<%= health.webpage %>"><%= health.name %></a>
@@ -16,6 +16,7 @@
         <%= health.city %>, <span class="state"><%= health.state %></span>
         <span class="zip"><%= health.zip %></span>
       </p>
+      <p class="description"><%= health.description %></p>
       <hr />
       <a class="delete download-btn" data-health="<%= health._id %>">DELETE</a>
     </div>

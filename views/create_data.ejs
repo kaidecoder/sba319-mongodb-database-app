@@ -6,7 +6,6 @@
     <%- include("../partials/nav.ejs")%>
     <h2>College Resources</h2>
     <div class="college content">
-      <% if(colleges.length > 0){%> <% colleges.forEach(college => { %>
         <div class=" content">
               
               <h3 class="title"><a href="http://www.<%= college.webpage %>"><%= college.name %></a></h3>
@@ -26,9 +25,7 @@
               <hr>
           
         </div>
-        <% }) %> <% }else{ %>
-        <p>There is no college to show!!</p>
-        <% } %>
+    
     </div>
   </body>
 </html>

@@ -1,13 +1,6 @@
-POST http://localhost:3000/health HTTP/1.1
+PATCH  http://localhost:3000/update/65bf652331d8d2829e937706 HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Massachusetts General Hospital",
-    "webpage": "massgeneral.org",
-    "phone": "(617)726-8707",
-    "street": "55 Fruit Street",
-    "city": "Boston",
-    "state": "MA",
-    "zip": "02114",
-    "description": "Massachusetts General Hospital (Mass General or MGH) is the original and largest teaching hospital of Harvard Medical School, Harvard University located in the West End neighborhood of Boston, Massachusetts.[4] Massachusetts General Hospital houses the world's largest hospital-based research program, the Mass General Research Institute, with an annual research budget of more than $1.2 billion in 2021.[5] It is the third-oldest general hospital in the United States with a patient capacity of 999 beds.[6] Along with Brigham and Women's Hospital, Mass General is a founding member of Mass General Brigham, formerly known as Partners HealthCare, the largest healthcare provider in Massachusetts. It is currently ranked among the best hospitals in the United States by U.S. News & World Report"
+  "zip": "02199"
 }

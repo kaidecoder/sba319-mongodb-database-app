@@ -3,7 +3,7 @@
   <%- include("../partials/header.ejs")%>
   <body>
     <%- include("../partials/nav.ejs")%>
-    <h2>Resources for Attractions</h2>
+    <h2>Show Page for Attractions</h2>
     <div class="attraction content">
       <h3 class="title">
         <a href="http://www.<%= attraction.webpage %>"><%= attraction.name %></a>
@@ -16,6 +16,7 @@
         <%= attraction.city %>, <span class="state"><%= attraction.state %></span>
         <span class="zip"><%= attraction.zip %></span>
       </p>
+      <p class="description"><%= attraction.description %></p>
       <hr />
       <a class="delete download-btn" data-attraction="<%= attraction._id %>">DELETE</a>
     </div>

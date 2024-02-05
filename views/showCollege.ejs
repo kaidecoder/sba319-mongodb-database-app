@@ -3,7 +3,7 @@
   <%- include("../partials/header.ejs")%>
   <body>
     <%- include("../partials/nav.ejs")%>
-    <h2>Resources for college</h2>
+    <h2>Show Page for college</h2>
     <div class="college content">
       <h3 class="title">
         <a href="https://www.<%= college.webpage %>"><%= college.name %></a>
@@ -16,12 +16,23 @@
         <%= college.city %>, <span class="state"><%= college.state %></span>
         <span class="zip"><%= college.zip %></span>
       </p>
+      <p class="description"><%= college.description %></p>
       <hr />
       <a class="delete download-btn" data-college="<%= college._id %>">DELETE</a>
+      <!-- <button class="update download-btn">UPDATE</button> -->
+      <% if(college._id){ %>
+        
+        <!-- <a class="patch download-btn" data-college="<%= college._id %>">PATCH</a> -->
+        <a class="update download-btn" href="/update/<%-college._id%>">UPDATE</a>
+      <!-- <% }else{ %> -->
+        <!-- <button class="submit download-btn">SUBMIT</button> -->
+        <% } %>
+        
     </div>
     <%- include("../partials/footer.ejs")%>
     <script>
       const deleteBtn = document.querySelector(".delete");
+      const patchBtn = document.querySelector(".update");
       deleteBtn.addEventListener("click", (e) => {
         const endpoint = `/college/${deleteBtn.dataset.college}`;
         fetch(endpoint, {
@@ -35,6 +46,30 @@
             console.log(error);
           });
       });
+      patchBtn.addEventListener("click", (e) => {
+        const endpoint = `/college/update/${patchBtn.dataset.college}`;
+        // to navigate to the update form after clicking the "UPDATE" button
+       // window.location.href = endpoint;
+
+        // to perform a PATCH request and stay on the same page, use the following code
+        
+        fetch(endpoint, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // Provide the updated data here
+            // Example: name: "Updated College Name"
+          }),
+        })
+          .then((response) => response.json())
+          .then(() => window.location.reload())
+          .catch((error) => console.log(error));
+        
+      });
+
+      
     </script>
   </body>
 </html>

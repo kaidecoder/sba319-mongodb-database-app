@@ -1,6 +1,7 @@
 import express from "express"
 const router = express.Router();
 import Attraction from "../models/attraction.mjs"
+import { ObjectId } from "mongodb";
 
 //create a new college  in the formNOTE: get?
 router.get("/create", (req, res) => {
@@ -47,5 +48,34 @@ router.get("/attraction/:id", async (req, res) => {
         console.log(error);
       });
   });
+
+  //delete an attraction item
+router.delete("/attraction/:id", (req, res) => {
+  const id = req.params.id;
+  Attraction.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/attraction" });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//update a attraction item
+router.patch("/attraction/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const attraction = await Attraction.findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      req.body,
+      { new: true }
+    );
+    console.log(attraction);
+
+    res.json({ attraction });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export default router

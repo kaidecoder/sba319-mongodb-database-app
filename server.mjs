@@ -26,7 +26,7 @@ app.use(attractionRouter)
 app.use(healthRouter)
 
 
-
+//NOTE:  Set up the 404 Page
 
 app.listen(3000, (req, res) => {
     console.log("app running on port 3000")
