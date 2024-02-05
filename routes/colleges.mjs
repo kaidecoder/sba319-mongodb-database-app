@@ -12,9 +12,19 @@ router.post("/create", (req, res) => {
   res.render("create_data", { college : {} });
 });
 
-//create a new college  in the formNOTE: get?
-router.get("/update/:id", (req, res) => {
-  res.render("create_data");
+//create an updated college  in the formNOTE: get?
+router.get("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const college = await College.findById(id);
+    if (!college) {
+      return res.status(404).json({ error: "College not found" });
+    }
+    res.render("create_data", { college: college });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to fetch college for update" });
+  }
 });
 
 //add a new college

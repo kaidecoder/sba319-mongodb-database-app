@@ -38,10 +38,7 @@
         fetch(endpoint, {
           method: "DELETE",
         })
-          .then((response) => {
-            response.json();
-          })
-          .then((data) => (window.location.href = "/college"))
+          .then(() => (window.location.href = "/college"))
           .catch((error) => {
             console.log(error);
           });
@@ -49,23 +46,23 @@
       patchBtn.addEventListener("click", (e) => {
         const endpoint = `/college/update/${patchBtn.dataset.college}`;
         // to navigate to the update form after clicking the "UPDATE" button
-       // window.location.href = endpoint;
+       window.location.href = endpoint;
 
         // to perform a PATCH request and stay on the same page, use the following code
         
-        fetch(endpoint, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            // Provide the updated data here
-            // Example: name: "Updated College Name"
-          }),
-        })
-          .then((response) => response.json())
-          .then(() => window.location.reload())
-          .catch((error) => console.log(error));
+        // fetch(endpoint, {
+        //   method: "PATCH",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({
+        //     // Provide the updated data here
+        //     // Example: name: "Updated College Name"
+        //   }),
+        // })
+        //   .then((response) => response.json())
+        //   .then(() => window.location.reload())
+        //   .catch((error) => console.log(error));
         
       });
 
