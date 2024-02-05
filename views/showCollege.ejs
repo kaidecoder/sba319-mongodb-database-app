@@ -19,30 +19,35 @@
       <p class="description"><%= college.description %></p>
       <hr />
       <a class="delete download-btn" data-college="<%= college._id %>">DELETE</a>
-      <!-- <button class="update download-btn">UPDATE</button> -->
+    
       <% if(college._id){ %>
-        
-        <!-- <a class="patch download-btn" data-college="<%= college._id %>">PATCH</a> -->
         <a class="update download-btn" href="/update/<%-college._id%>">UPDATE</a>
-      <!-- <% }else{ %> -->
-        <!-- <button class="submit download-btn">SUBMIT</button> -->
-        <% } %>
+       <% } %>
         
     </div>
     <%- include("../partials/footer.ejs")%>
     <script>
       const deleteBtn = document.querySelector(".delete");
       const patchBtn = document.querySelector(".update");
-      deleteBtn.addEventListener("click", (e) => {
-        const endpoint = `/college/${deleteBtn.dataset.college}`;
-        fetch(endpoint, {
-          method: "DELETE",
-        })
-          .then(() => (window.location.href = "/college"))
-          .catch((error) => {
-            console.log(error);
-          });
+      document.addEventListener("DOMContentLoaded", function () {
+        const deleteBtn = document.querySelector(".delete");
+        deleteBtn.addEventListener("click", (e) => {
+          const endpoint = `/college/${deleteBtn.dataset.college}`;
+          fetch(endpoint, {
+            method: "DELETE",
+          })
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              window.location.href = "/college";
+            })
+            .catch((error) => {
+              console.log("Error:", error);
+            });
+        });
       });
+
       patchBtn.addEventListener("click", (e) => {
         const endpoint = `/college/update/${patchBtn.dataset.college}`;
         // to navigate to the update form after clicking the "UPDATE" button

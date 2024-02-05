@@ -3,7 +3,7 @@
   <%- include("../partials/header.ejs")%>
   <body>
     <%- include("../partials/nav.ejs")%>
-    <div class="create-resource content">
+    <div class="create-resource content" id="update_form">
       <form action="/update/<%= college._id %>" method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="<%= college.name %>" />
@@ -38,6 +38,16 @@
       </form>
     </div>
     <%- include("../partials/footer.ejs")%>
-    
+    <script>
+        // Clear form fields after successful submission
+        document.addEventListener("DOMContentLoaded", function () {
+          // clear the form
+          const form = document.getElementById("update_form");
+          form.reset(); 
+      
+          
+        });
+      </script>
+      
   </body>
 </html>

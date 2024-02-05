@@ -54,9 +54,6 @@ router.post("/update/:id", async (req, res) => {
   }
 });
 
-
-
-
 //create an event
 router.post("/create", (req, res) => {
   res.render("createResource", { event: {} });
