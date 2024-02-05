@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 mongoose
   .connect(
-    "mongodb+srv://nwasporter70:6HivhNQ38W2Ch4wA@cluster0.da2gegj.mongodb.net/HelpBostonians?retryWrites=true&w=majority",
+    process.env.DB_URI
   )
   .then(() => {
     console.log("db connection successful");

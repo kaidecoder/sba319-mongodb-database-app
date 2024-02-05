@@ -1,5 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv"
+dotenv.config()
 import("./db/mongoose.mjs");
 const app = express();
 import collegeRouter from "./routes/colleges.mjs";
@@ -9,6 +11,7 @@ import bodyParser from "body-parser";
 import healthRouter from "./routes/health.mjs";
 import dataRouter from "./routes/data.mjs"
 
+const PORT = process.env.PORT || 3000
 //view engine
 app.set("view engine", "ejs");
 
@@ -24,6 +27,7 @@ app.use(express.static("./images"));
 app.use(collegeRouter);
 app.use(attractionRouter);
 app.use(healthRouter);
+app.use(dataRouter)
 
 
 
@@ -50,6 +54,6 @@ app.use((req, res, next) => {
 
 
 
-app.listen(3000, (req, res) => {
-  console.log("app running on port 3000");
+app.listen(PORT, (req, res) => {
+  console.log(`app running on PORT ${PORT}`);
 });
