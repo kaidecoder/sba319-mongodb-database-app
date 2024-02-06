@@ -26,7 +26,7 @@ router.post("/create", (req, res) => {
   res.render("create_data", { college: {} });
 });
 
-//Get an updated college  in the update form
+//Get an updated college in the update form
 router.get("/update/:id", async (req, res) => {
   const id = req.params.id;
   try {

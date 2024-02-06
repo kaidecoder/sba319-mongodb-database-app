@@ -36,7 +36,6 @@ const collegeSchema = mongoose.Schema(
     },
     years: {
       type: String,
-      required: true,
     },
     costAfterAid: {
       type: String,

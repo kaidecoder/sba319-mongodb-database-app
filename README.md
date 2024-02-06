@@ -2,60 +2,244 @@
 This project introduces users to resources in Boston, like colleges, hospitals, and attractions, and builds upon the previous lesson that offered resources like housing, jobs, and food.  Each resource has routes - 
 
 ## My Routes: 
+<span style="color: red;">
+
 ### Get the about page
+``` 
 router.get("/about", (req, res) => {
   res.render("about");
 });
-
+```
 ### Get the quiz
+```
 router.get("/quiz", (req, res) => {
   res.render("quiz");
 });
+```
 
 ### Get the trivia
+```
 router.get("/trivia", (req, res) => {
   res.render("trivia");
 });
+```
 
 ### Redirect help page to the college page
+```
 router.get("/help", (req, res) => {
   res.redirect("/college");
 });
+```
+
 ### Create a new resource in the update form
+```
 router.post("/create", (req, res) => {
   res.render("create_data", { college: {} });
 });
+```
 
 ### Get an updated resource in the update form
-router.get("/update/:id", async (req, res) => {})
+```
+router.get("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const college = await College.findById(id);
+    if (!college) {
+      return res.status(404).json({ error: "College not found" });
+    }
+    res.render("create_data", { college: college });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to fetch college for update" });
+  }
+});
+```
+
 ### Create a new resource in Postman: 
-router.post("/college",async ()=> {})
+```
+router.post("/college", async (req, res) => {
+  try {
+    const college = await College.create(req.body);
+    res.status(200).json(college);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
 router.post("/attraction", async () => {})
 router.post("/health", async ()=>{}),
+```
 
-### Create a new resource in the update form 
-router.post("/update/:id", async (req, res) => {})
-### Create a resource in the regular form - change the post route in the form as is necessary
+### Create a resource in the update form 
+```
+router.post("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const updatedCollege = await College.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    // res.render("create_data", { college: updatedCollege });
+    res.redirect("/college");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to update college" });
+  }
+});
+```
+
+### Create a resource in the regular form - change the action in the form as is necessary
+```
 router.post("/create", (req, res) => {
   res.render("createResource", { event: {} });
 });
 ### Update a resource in the update form
-router.patch("/college/:id", async ()=>{}), 
+router.patch("/college/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updatedCollege = await College.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+
+    if (!updatedCollege) {
+      return res.status(404).json({ error: "College not found" });
+    }
+
+    res.render("create_data", { college: updatedCollege });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to update college" });
+  }
+});
+
 router.patch("/attraction/:id", async ()=>{}), 
 router.patch("/health/:id", async ()=>{}), 
-### Get all available resources
-router.get("/college", async ()=>{}), 
-router.find("/attraction", async ()=>{}), 
+```
+
+### Get all available resources or get by zip
+```
+router.get("/college", async (req, res) => {
+  try {
+    // Retrieve college based on the ZIP code (if provided)
+    const zip = req.query.zip;
+    const colleges = zip
+      ? await College.find({ zip: zip })
+      : await College.find();
+
+    // Render the "college" page with the list of colleges
+    res.render("colleges", { colleges: colleges });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "college document not available" });
+  }
+});
+
+router.get("/attraction", async ()=>{}), 
 router.get("/health", async ()=>{}), 
+```
 
 ### Get one resource
-router.get("/college/:id", async ()=>{}), 
+```
+router.get("/college/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  await College.findById(id)
+    .then((result) => {
+      console.log(result);
+      res.render("showCollege", { college: result });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+
 router.get("/attraction/:id", async ()=>{}), 
 router.get("/:id", async ()=>{}), 
+```
+
 ### Delete a resource
-router.delete("/college/:id", async ()=>{}), router.delete("/attraction/:id", async ()=>{}), router.delete("/health/:id", async ()=>{}),
+```
+router.delete("/college/:id", (req, res) => {
+  const id = req.params.id;
+  College.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/college" });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "Did not delete" });
+    });
+}); 
+
+router.delete("/attraction/:id", async ()=>{}), 
+router.delete("/health/:id", async ()=>{}),
+```
+</span>
+
 
  data, using the browser, the rest-client extension in VSCode or using Postman.  All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button.  Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
+
+ ## My Indexes
+ ![Alt](./images/Screenshot 2024-02-06 at 4.43.48 AM.png)
+
+ ## My Query
+ ![Alt](./images/Screenshot 2024-02-05 at 4.51.54 AM.png)
+
+ ## MongDB Validation Rules
+ ```
+ import mongoose from "mongoose";
+
+const attractionSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    webpage: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    street: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    state: {
+      type: String,
+      required: true,
+    },
+    zip: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true },
+);
+
+const Attractions = mongoose.model("Attractions", attractionSchema);
+
+export default Attractions;
+```
+
+ ## My Validation Error
+ ![Alt](./images/Screenshot 2024-02-06 at 4.33.31 AM.png)
+
+ ## Execution Stats
+ ![Alt](./images/Screenshot 2024-02-05 at 4.53.11 AM.png)
+
+ ## Create an index
+ ![Alt](./images/Screenshot 2024-02-04 at 5.42.34 PM.png)
 ## Introduction
 
 This assessment measures your understanding of MongoDB and your capability to implement its features in a practical manner. You have creative freedom in the topic, material, and purpose of the web application you will be developing, so have fun with it! However, remember to plan the scope of your project to the timeline you have been given.
@@ -124,3 +308,7 @@ Medium,
 NodeJS docs,
 MongoDB docs,
 Mongoose docs,
+ChatGPT
+
+### Technology
+express, mongoose, mongodb, nodeJS, morgan, dotenv, html, css, VSCode, MacBook, Google Dev Tools, Slack, 
