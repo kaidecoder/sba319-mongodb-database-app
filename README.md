@@ -1,5 +1,9 @@
 # SBA 319: MongoDB Database Application
 
+## To Use This App
+
+
+
 This Node.js application uses Express.js for routing and MongoDB with Mongoose for database operations.
 
 - It imports necessary modules and sets up an Express router.
@@ -55,11 +59,18 @@ router.get("/help", (req, res) => {
 });
 ```
 
-### Create a new resource in the update form
+### Query the database for the names only
 
 ```
-router.post("/create", (req, res) => {
-  res.render("create_data", { college: {} });
+// http://localhost:3000/college/name?name
+router.get("/college/name", async (req, res) => {
+  try {
+    let names = await College.find({}, 'name'); 
+    res.json({ names: names });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 ```
 
@@ -259,7 +270,7 @@ const Attractions = mongoose.model("Attractions", attractionSchema);
 export default Attractions;
 ```
 ## My Indexes
-![validation error](./images/img1.png)
+![validation error](./images/img9.png)
 
 ## My Query
 ![validation error](./images/img5.png)

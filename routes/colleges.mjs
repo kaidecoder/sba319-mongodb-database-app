@@ -26,6 +26,19 @@ router.get("/help", (req, res) => {
 //   res.render("create_data", { college: {} });
 // });
 
+//Query the database for the names only
+// http://localhost:3000/college/name?name
+router.get("/college/name", async (req, res) => {
+  try {
+    let names = await College.find({}, 'name'); // Projecting only the 'name' field
+    res.json({ names: names });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 //Get an updated college in the update form
 router.get("/update/:id", async (req, res) => {
   const id = req.params.id;
