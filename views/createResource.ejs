@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <%- include("../partials/header.ejs")%>
   <body>
@@ -23,8 +23,7 @@
         <input type="text" id="description" name="description" required />
         <label for="years">Years:</label>
         <div class="radio">
-          <input type="radio" id="years" name="years" /> 2
-          <input type="radio" id="years" name="years"  /> 4
+          <input type="text" id="years" name="years" />
         </div>
         <label for="costAfterAid">Cost After Aid:</label>
         <input type="text" id="costAfterAid" name="costAfterAid" />
@@ -33,11 +32,14 @@
         <label for="acceptanceRate">Acceptance Rate:</label>
         <input type="text" id="acceptanceRate" name="acceptanceRate" />
         <label for="sportingAffiliations">Sporting Affiliations:</label>
-        <input type="text" id="sportingAffiliations" name="sportingAffiliations"  />
+        <input
+          type="text"
+          id="sportingAffiliations"
+          name="sportingAffiliations"
+        />
         <button class="download-btn">Submit</button>
       </form>
     </div>
     <%- include("../partials/footer.ejs")%>
-    
   </body>
 </html>

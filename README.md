@@ -1,5 +1,23 @@
 # SBA 319: MongoDB Database Application
-This project introduces users to resources in Boston, like colleges, hospitals, and attractions, and builds upon the previous lesson that offered resources like housing, jobs, and food.  Each resource has routes - 
+This Node.js application uses Express.js for routing and MongoDB with Mongoose for database operations.  
+
+-   It imports necessary modules and sets up an Express router.
+
+-   It defines several routes for different operations:
+
+    -   Routes for rendering different pages (/about, /quiz, /trivia).
+    -   A route for redirecting to the college page (/help).
+    -   Routes for handling college-related operations:
+        - POST /create to create a new college.
+        - GET /update/:id to get a college for updating.
+        - POST /update/:id to update a college.
+        - PATCH /college/:id to update a college partially.
+        - GET /college to get all colleges or colleges filtered by ZIP code.
+        - GET /college/:id to get details of a specific college.
+        - DELETE /college/:id to delete a college.
+-Each route handler contains the necessary logic to interact with the database (MongoDB) using Mongoose for CRUD operations.
+
+
 
 ## My Routes: 
 <span style="color: red;">

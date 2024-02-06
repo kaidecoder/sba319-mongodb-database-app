@@ -1,7 +1,6 @@
 import express from "express";
 const router = express.Router();
 import Attraction from "../models/attraction.mjs";
-import { ObjectId } from "mongodb";
 
 //create a new college  in the formNOTE: get?
 router.get("/create", (req, res) => {

@@ -1,8 +1,6 @@
 import Health from "../models/health.mjs";
 import express from "express";
 const router = express.Router();
-import mongoose from "mongoose";
-import { ObjectId } from "mongodb";
 
 //create a health document
 router.post("/health", async (req, res) => {
@@ -62,7 +60,7 @@ router.patch("/health/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const health = await Health.findOneAndUpdate(
-      { _id: new ObjectId(id) },
+      { _id: id },
       req.body,
       { new: true },
     );

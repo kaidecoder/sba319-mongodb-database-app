@@ -1,7 +1,6 @@
 import express from "express";
 const router = express.Router();
 import College from "../models/college.mjs";
-import { ObjectId } from "mongodb";
 
 router.get("/about", (req, res) => {
   res.render("about");
