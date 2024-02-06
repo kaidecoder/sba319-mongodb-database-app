@@ -21,11 +21,6 @@ router.get("/help", (req, res) => {
   res.redirect("/college");
 });
 
-//create a new college  in the update form
-// router.post("/create", (req, res) => {
-//   res.render("create_data", { college: {} });
-// });
-
 //Query the database for the names only
 // http://localhost:3000/college/name?name
 router.get("/college/name", async (req, res) => {

@@ -1,9 +1,9 @@
 # SBA 319: MongoDB Database Application
 
-## To Use This App
+## To Use This APP
+Once you have navigated to this project, look for the green "CODE" button. Click that, highlight "HTTPS" and copy the link underneath.  In your terminal, create the folder you want to hold this project.  CD into that folder, then type "git clone " into your terminal to begin the process.  Continue by then pasting the string you copied.  Now finally, enter a "." after a space at the end.  You should see "git clone + pasted text from github + ."  Hit the enter key.  This repo will be copied to your folder.  Now you must type "npm install"  and "npm run nodemon" to install all dependencies and start the server.  You must supply your own connection string to your database.  
 
-
-
+## About This APP
 This Node.js application uses Express.js for routing and MongoDB with Mongoose for database operations.
 
 - It imports necessary modules and sets up an Express router.
@@ -334,9 +334,13 @@ These bonus objectives cannot increase your overall score above 100%. Successful
 
 Once you have completed your project, answer the following questions to help solidify your understanding of the process and its outcomes, as well as improve your ability to handle similar tasks in the future.
 What could you have done differently during the planning stages of your project to make the execution easier?
+- During the planning stages, I took no notes, made no wireframes, but made copious mental notes on how I wanted my project to look.  Maybe I could write my thoughts down on paper next time.
 Were there any requirements that were difficult to implement? What do you think would make them easier to implement in future projects?
+- Yes, most definitely.  The hardest part of my assignment was putting in an update button, and using the form I already have to update documents.  I ended up crating a whole new form to use for the update.  This definitely needed some planning so I could see how the pieces fit together.  I ended up piece-mealing the code, but I believe that I could use the form I already had to update the documents.
 What would you add to or change about your application if given more time?
+- Given more time, I would like all 3 of my endpoints to be able to update documents.  The code was so involved, I was afraid of making mistakes and getting errors.
 Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again:
+Dear self, I want you to start looking at other people's code to familiarize yourself with other ideas about coding.  You must practice always to learn the nuances of the code, how to do simple things with the code, then you can build on that knowledge.  Have no fear when you code, just go for it.  Get on GitHub and search up ideas and check out the code.  Think of how you would do it and compare that with how the user did it.  You must learn other strategies other than your own, as yours is limited!!
 
 ### References
 
@@ -346,7 +350,6 @@ Classmates,
 Academind: YouTube,
 Caleb Curry: YouTube,
 DCode: YouTube,
-Net Ninja: YouTube,
 Devtamin: YouTube,
 Google,
 Stack Overflow,
