@@ -22,8 +22,10 @@ ul li ul.dropdown {
   width: 100%;
   background: black;
   position: absolute;
+  margin: 0 auto;
   z-index: 999;
   display: none;
+  text-align: center;
 }
 ul li a:hover {
   background: crimson;

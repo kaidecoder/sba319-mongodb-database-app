@@ -76,8 +76,9 @@ footer {
 }
 h2 {
   margin-bottom: 40px;
+  color: white;
 }
-h2, h3 {
+h3 {
   text-transform: capitalize;
   margin-bottom: 8px;
   color: var(--continental-blue);
