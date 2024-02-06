@@ -211,14 +211,6 @@ router.delete("/health/:id", async ()=>{}),
 
 data, using the browser, the rest-client extension in VSCode or using Postman. All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button. Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
 
-## My Indexes
-
-![Alt]("./images/Screenshot 2024-02-06 at 4.43.48 AM.png")
-
-## My Query
-
-![Alt]("./images/Screenshot 2024-02-05 at 4.51.54 AM.png")
-
 ## MongDB Validation Rules
 
 ```
@@ -266,28 +258,21 @@ const Attractions = mongoose.model("Attractions", attractionSchema);
 
 export default Attractions;
 ```
+## My Indexes
+![validation error](./images/img1.png)
 
+## My Query
+![validation error](./images/img5.png)
 ## My Validation Error
+![validation error](./images/img3.png)
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
-
-
-![alt text](http://url/to/img.png)
-![Validation Error](http://Screenshot 2024-02-06 at 4.33.31 AM.png)
-Try this markdown:
-
-![alt text](http://url/to/img.png)
-I think you can link directly to the raw version of an image if it's stored in your repository. i.e.
-
-![alt text](https://github.com/kaidecoder/sba319-mongodb-database-app/blob/main/img1?raw=true
 
 ## Execution Stats
-
-![Execution Stats](Screenshot 2024-02-05 at 4.53.11 AM.png)
+![validation error](./images/img6.png)
 
 ## Create an index
+![validation error](./images/img8.png)
 
-![index]("./Screenshot 2024-02-04 at 5.42.34 PM.png")
 
 ## Introduction
 
