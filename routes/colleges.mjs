@@ -21,12 +21,12 @@ router.get("/help", (req, res) => {
   res.redirect("/college");
 });
 
-//create a new college  in the formNOTE: get?
+//create a new college  in the update form
 router.post("/create", (req, res) => {
   res.render("create_data", { college: {} });
 });
 
-//create an updated college  in the formNOTE: get?
+//Get an updated college  in the update form
 router.get("/update/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -52,6 +52,7 @@ router.post("/college", async (req, res) => {
   }
 });
 
+//create a college in the update form
 router.post("/update/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -66,12 +67,12 @@ router.post("/update/:id", async (req, res) => {
   }
 });
 
-//create an event
+//create a resource
 router.post("/create", (req, res) => {
   res.render("createResource", { event: {} });
 });
 
-// Update a college
+// Update a college in the update form
 router.patch("/college/:id", async (req, res) => {
   try {
     const id = req.params.id;

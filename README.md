@@ -1,5 +1,61 @@
 # SBA 319: MongoDB Database Application
-This project introduces users to resources in Boston like colleges, hospitals, and attractions, and builds upon the previous lesson that offered resources like housing, jobs, and food.  Each resource has routes - to create(/college, /attraction, /health), read(/college, /attraction, /health), delete(/college/:id, /attraction/:id, /health/:id), and update(/college/:id, /attraction/:id, /health/:id) data, using the browser, the rest-client extension in VSCode or using Postman.  All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button.  Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
+This project introduces users to resources in Boston, like colleges, hospitals, and attractions, and builds upon the previous lesson that offered resources like housing, jobs, and food.  Each resource has routes - 
+
+## My Routes: 
+### Get the about page
+router.get("/about", (req, res) => {
+  res.render("about");
+});
+
+### Get the quiz
+router.get("/quiz", (req, res) => {
+  res.render("quiz");
+});
+
+### Get the trivia
+router.get("/trivia", (req, res) => {
+  res.render("trivia");
+});
+
+### Redirect help page to the college page
+router.get("/help", (req, res) => {
+  res.redirect("/college");
+});
+### Create a new resource in the update form
+router.post("/create", (req, res) => {
+  res.render("create_data", { college: {} });
+});
+
+### Get an updated resource in the update form
+router.get("/update/:id", async (req, res) => {})
+### Create a new resource in Postman: 
+router.post("/college",async ()=> {})
+router.post("/attraction", async () => {})
+router.post("/health", async ()=>{}),
+
+### Create a new resource in the update form 
+router.post("/update/:id", async (req, res) => {})
+### Create a resource in the regular form - change the post route in the form as is necessary
+router.post("/create", (req, res) => {
+  res.render("createResource", { event: {} });
+});
+### Update a resource in the update form
+router.patch("/college/:id", async ()=>{}), 
+router.patch("/attraction/:id", async ()=>{}), 
+router.patch("/health/:id", async ()=>{}), 
+### Get all available resources
+router.get("/college", async ()=>{}), 
+router.find("/attraction", async ()=>{}), 
+router.get("/health", async ()=>{}), 
+
+### Get one resource
+router.get("/college/:id", async ()=>{}), 
+router.get("/attraction/:id", async ()=>{}), 
+router.get("/:id", async ()=>{}), 
+### Delete a resource
+router.delete("/college/:id", async ()=>{}), router.delete("/attraction/:id", async ()=>{}), router.delete("/health/:id", async ()=>{}),
+
+ data, using the browser, the rest-client extension in VSCode or using Postman.  All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button.  Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
 ## Introduction
 
 This assessment measures your understanding of MongoDB and your capability to implement its features in a practical manner. You have creative freedom in the topic, material, and purpose of the web application you will be developing, so have fun with it! However, remember to plan the scope of your project to the timeline you have been given.
@@ -52,3 +108,19 @@ What could you have done differently during the planning stages of your project 
 Were there any requirements that were difficult to implement? What do you think would make them easier to implement in future projects?
 What would you add to or change about your application if given more time?
 Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again:
+
+### References
+Tishana Trainor: Teacher,
+Manara Ali: Teacher,
+Classmates,
+Academind: YouTube,
+Caleb Curry: YouTube,
+DCode: YouTube,
+Net Ninja: YouTube,
+Devtamin: YouTube,
+Google,
+Stack Overflow,
+Medium,
+NodeJS docs,
+MongoDB docs,
+Mongoose docs,
