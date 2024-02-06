@@ -1,34 +1,38 @@
 # SBA 319: MongoDB Database Application
-This Node.js application uses Express.js for routing and MongoDB with Mongoose for database operations.  
 
--   It imports necessary modules and sets up an Express router.
+This Node.js application uses Express.js for routing and MongoDB with Mongoose for database operations.
 
--   It defines several routes for different operations:
+- It imports necessary modules and sets up an Express router.
 
-    -   Routes for rendering different pages (/about, /quiz, /trivia).
-    -   A route for redirecting to the college page (/help).
-    -   Routes for handling college-related operations:
-        - POST /create to create a new college.
-        - GET /update/:id to get a college for updating.
-        - POST /update/:id to update a college.
-        - PATCH /college/:id to update a college partially.
-        - GET /college to get all colleges or colleges filtered by ZIP code.
-        - GET /college/:id to get details of a specific college.
-        - DELETE /college/:id to delete a college.
--Each route handler contains the necessary logic to interact with the database (MongoDB) using Mongoose for CRUD operations.
+- It defines several routes for different operations:
 
+      -   Routes for rendering different pages (/about, /quiz, /trivia).
+      -   A route for redirecting to the college page (/help).
+      -   Routes for handling college-related operations:
+          - POST /create to create a new college.
+          - GET /update/:id to get a college for updating.
+          - POST /update/:id to update a college.
+          - PATCH /college/:id to update a college partially.
+          - GET /college to get all colleges or colleges filtered by ZIP code.
+          - GET /college/:id to get details of a specific college.
+          - DELETE /college/:id to delete a college.
 
+  -Each route handler contains the necessary logic to interact with the database (MongoDB) using Mongoose for CRUD operations.
 
-## My Routes: 
+## My Routes:
+
 <span style="color: red;">
 
 ### Get the about page
-``` 
+
+```
 router.get("/about", (req, res) => {
   res.render("about");
 });
 ```
+
 ### Get the quiz
+
 ```
 router.get("/quiz", (req, res) => {
   res.render("quiz");
@@ -36,6 +40,7 @@ router.get("/quiz", (req, res) => {
 ```
 
 ### Get the trivia
+
 ```
 router.get("/trivia", (req, res) => {
   res.render("trivia");
@@ -43,6 +48,7 @@ router.get("/trivia", (req, res) => {
 ```
 
 ### Redirect help page to the college page
+
 ```
 router.get("/help", (req, res) => {
   res.redirect("/college");
@@ -50,6 +56,7 @@ router.get("/help", (req, res) => {
 ```
 
 ### Create a new resource in the update form
+
 ```
 router.post("/create", (req, res) => {
   res.render("create_data", { college: {} });
@@ -57,6 +64,7 @@ router.post("/create", (req, res) => {
 ```
 
 ### Get an updated resource in the update form
+
 ```
 router.get("/update/:id", async (req, res) => {
   const id = req.params.id;
@@ -73,7 +81,8 @@ router.get("/update/:id", async (req, res) => {
 });
 ```
 
-### Create a new resource in Postman: 
+### Create a new resource in Postman:
+
 ```
 router.post("/college", async (req, res) => {
   try {
@@ -88,7 +97,8 @@ router.post("/attraction", async () => {})
 router.post("/health", async ()=>{}),
 ```
 
-### Create a resource in the update form 
+### Create a resource in the update form
+
 ```
 router.post("/update/:id", async (req, res) => {
   const id = req.params.id;
@@ -106,6 +116,7 @@ router.post("/update/:id", async (req, res) => {
 ```
 
 ### Create a resource in the regular form - change the action in the form as is necessary
+
 ```
 router.post("/create", (req, res) => {
   res.render("createResource", { event: {} });
@@ -129,11 +140,12 @@ router.patch("/college/:id", async (req, res) => {
   }
 });
 
-router.patch("/attraction/:id", async ()=>{}), 
-router.patch("/health/:id", async ()=>{}), 
+router.patch("/attraction/:id", async ()=>{}),
+router.patch("/health/:id", async ()=>{}),
 ```
 
 ### Get all available resources or get by zip
+
 ```
 router.get("/college", async (req, res) => {
   try {
@@ -151,11 +163,12 @@ router.get("/college", async (req, res) => {
   }
 });
 
-router.get("/attraction", async ()=>{}), 
-router.get("/health", async ()=>{}), 
+router.get("/attraction", async ()=>{}),
+router.get("/health", async ()=>{}),
 ```
 
 ### Get one resource
+
 ```
 router.get("/college/:id", async (req, res) => {
   const id = req.params.id;
@@ -171,11 +184,12 @@ router.get("/college/:id", async (req, res) => {
 });
 
 
-router.get("/attraction/:id", async ()=>{}), 
-router.get("/:id", async ()=>{}), 
+router.get("/attraction/:id", async ()=>{}),
+router.get("/:id", async ()=>{}),
 ```
 
 ### Delete a resource
+
 ```
 router.delete("/college/:id", (req, res) => {
   const id = req.params.id;
@@ -187,62 +201,65 @@ router.delete("/college/:id", (req, res) => {
       console.log(error);
       res.status(500).json({ error: "Did not delete" });
     });
-}); 
+});
 
-router.delete("/attraction/:id", async ()=>{}), 
+router.delete("/attraction/:id", async ()=>{}),
 router.delete("/health/:id", async ()=>{}),
 ```
+
 </span>
 
+data, using the browser, the rest-client extension in VSCode or using Postman. All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button. Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
 
- data, using the browser, the rest-client extension in VSCode or using Postman.  All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button.  Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
+## My Indexes
 
- ## My Indexes
- ![Alt]("./images/Screenshot 2024-02-06 at 4.43.48 AM.png")
+![Alt]("./images/Screenshot 2024-02-06 at 4.43.48 AM.png")
 
- ## My Query
- ![Alt]("./images/Screenshot 2024-02-05 at 4.51.54 AM.png")
+## My Query
 
- ## MongDB Validation Rules
- ```
- import mongoose from "mongoose";
+![Alt]("./images/Screenshot 2024-02-05 at 4.51.54 AM.png")
+
+## MongDB Validation Rules
+
+```
+import mongoose from "mongoose";
 
 const attractionSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    webpage: {
-      type: String,
-      required: true,
-    },
-    phone: {
-      type: String,
-      required: true,
-    },
-    street: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: String,
-      required: true,
-    },
-    state: {
-      type: String,
-      required: true,
-    },
-    zip: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-  },
-  { timestamps: true },
+ {
+   name: {
+     type: String,
+     required: true,
+   },
+   webpage: {
+     type: String,
+     required: true,
+   },
+   phone: {
+     type: String,
+     required: true,
+   },
+   street: {
+     type: String,
+     required: true,
+   },
+   city: {
+     type: String,
+     required: true,
+   },
+   state: {
+     type: String,
+     required: true,
+   },
+   zip: {
+     type: String,
+     required: true,
+   },
+   description: {
+     type: String,
+     required: true,
+   },
+ },
+ { timestamps: true },
 );
 
 const Attractions = mongoose.model("Attractions", attractionSchema);
@@ -250,14 +267,18 @@ const Attractions = mongoose.model("Attractions", attractionSchema);
 export default Attractions;
 ```
 
- ## My Validation Error
- ![Alt]("./images/Screenshot 2024-02-06 at 4.33.31 AM.png")
+## My Validation Error
 
- ## Execution Stats
- ![Alt]("./images/Screenshot 2024-02-05 at 4.53.11 AM.png")
+![Validation Error](./Screenshot 2024-02-06 at 4.33.31 AM.png)
 
- ## Create an index
- ![Alt]("./images/Screenshot 2024-02-04 at 5.42.34 PM.png")
+## Execution Stats
+
+![Execution Stats]("./Screenshot 2024-02-05 at 4.53.11 AM.png")
+
+## Create an index
+
+![index]("./Screenshot 2024-02-04 at 5.42.34 PM.png")
+
 ## Introduction
 
 This assessment measures your understanding of MongoDB and your capability to implement its features in a practical manner. You have creative freedom in the topic, material, and purpose of the web application you will be developing, so have fun with it! However, remember to plan the scope of your project to the timeline you have been given.
@@ -312,6 +333,7 @@ What would you add to or change about your application if given more time?
 Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again:
 
 ### References
+
 Tishana Trainor: Teacher,
 Manara Ali: Teacher,
 Classmates,
@@ -329,4 +351,5 @@ Mongoose docs,
 ChatGPT
 
 ### Technology
-express, mongoose, mongodb, nodeJS, morgan, dotenv, html, css, VSCode, MacBook, Google Dev Tools, Slack, 
+
+express, mongoose, mongodb, nodeJS, morgan, dotenv, html, css, VSCode, MacBook, Google Dev Tools, Slack,
