@@ -269,7 +269,17 @@ export default Attractions;
 
 ## My Validation Error
 
-![Validation Error](./Screenshot 2024-02-06 at 4.33.31 AM.png)
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+
+
+![alt text](http://url/to/img.png)
+![Validation Error](http://Screenshot 2024-02-06 at 4.33.31 AM.png)
+Try this markdown:
+
+![alt text](http://url/to/img.png)
+I think you can link directly to the raw version of an image if it's stored in your repository. i.e.
+
+![alt text](https://github.com/kaidecoder/sba319-mongodb-database-app/blob/main/img1?raw=true
 
 ## Execution Stats
 
