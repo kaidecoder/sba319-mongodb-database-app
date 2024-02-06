@@ -273,7 +273,7 @@ export default Attractions;
 
 ## Execution Stats
 
-![Execution Stats]("./Screenshot 2024-02-05 at 4.53.11 AM.png")
+![Execution Stats](Screenshot 2024-02-05 at 4.53.11 AM.png)
 
 ## Create an index
 
