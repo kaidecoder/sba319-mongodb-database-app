@@ -198,10 +198,10 @@ router.delete("/health/:id", async ()=>{}),
  data, using the browser, the rest-client extension in VSCode or using Postman.  All routes are equipped with a form to create data, and a button to delete data, but only the college route is equipped with a form to update data, and an edit button.  Also available in the app will be trivia about Boston, a quiz on some scary Boston history, and some pictures about Boston.
 
  ## My Indexes
- ![Alt](./images/Screenshot 2024-02-06 at 4.43.48 AM.png)
+ ![Alt]("./images/Screenshot 2024-02-06 at 4.43.48 AM.png")
 
  ## My Query
- ![Alt](./images/Screenshot 2024-02-05 at 4.51.54 AM.png)
+ ![Alt]("./images/Screenshot 2024-02-05 at 4.51.54 AM.png")
 
  ## MongDB Validation Rules
  ```
@@ -251,13 +251,13 @@ export default Attractions;
 ```
 
  ## My Validation Error
- ![Alt](./images/Screenshot 2024-02-06 at 4.33.31 AM.png)
+ ![Alt]("./images/Screenshot 2024-02-06 at 4.33.31 AM.png")
 
  ## Execution Stats
- ![Alt](./images/Screenshot 2024-02-05 at 4.53.11 AM.png)
+ ![Alt]("./images/Screenshot 2024-02-05 at 4.53.11 AM.png")
 
  ## Create an index
- ![Alt](./images/Screenshot 2024-02-04 at 5.42.34 PM.png)
+ ![Alt]("./images/Screenshot 2024-02-04 at 5.42.34 PM.png")
 ## Introduction
 
 This assessment measures your understanding of MongoDB and your capability to implement its features in a practical manner. You have creative freedom in the topic, material, and purpose of the web application you will be developing, so have fun with it! However, remember to plan the scope of your project to the timeline you have been given.
