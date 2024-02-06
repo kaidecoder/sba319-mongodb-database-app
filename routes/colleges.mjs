@@ -16,14 +16,15 @@ router.get("/trivia", (req, res) => {
   res.render("trivia");
 });
 
+//redirect help to the college page
 router.get("/help", (req, res) => {
   res.redirect("/college");
 });
 
 //create a new college  in the update form
-router.post("/create", (req, res) => {
-  res.render("create_data", { college: {} });
-});
+// router.post("/create", (req, res) => {
+//   res.render("create_data", { college: {} });
+// });
 
 //Get an updated college in the update form
 router.get("/update/:id", async (req, res) => {

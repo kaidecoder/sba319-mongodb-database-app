@@ -34,8 +34,8 @@ app.use((req, res, next) => {
     //error.status is correct
     error.status = 404;
     //forward the request and attach the error msg
-    res.render("404");
-    next(error);
+    // res.render("404");
+    next(error)
   });
   
   //this handles all kinds of errors, not just 404

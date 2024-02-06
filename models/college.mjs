@@ -53,6 +53,16 @@ const collegeSchema = mongoose.Schema(
   { timestamps: true },
 );
 
+collegeSchema.index({ name: 1 });
+collegeSchema.index({ city: 1 });
+collegeSchema.index({ zip: 1 });
+collegeSchema.index({ costAfterAid: 1 });
+collegeSchema.index({ acceptanceRate: 1 });
+
+collegeSchema.query.byName = function (name) {
+  return this.where({ name: new RegExp(name, "i") });
+};
+
 const Colleges = mongoose.model("Colleges", collegeSchema);
 
 export default Colleges;
