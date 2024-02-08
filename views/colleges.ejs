@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/header.ejs")%>
+  <body>
+    
+    <%- include("../partials/nav.ejs")%>
+    <h2>Colleges</h2>
+    <div class="college content">
+      <% if(colleges.length > 0){%> <% colleges.forEach(college => { %>
+        <div class=" content">
+              
+              <h3 class="title"><a href="http://www.<%= college.webpage %>"><%= college.name %></a></h3>
+  
+              <h3><a class="single" href="/college/<%= college._id %>">GET THIS</a></h3>
+  
+              <p class="phone"><%= college.phone %></p>
+  
+              <p class="street"><%= college.street %></p>
+              <p class="city"><%= college.city %>, <span class="state"><%= college.state %></span> <span class="zip"><%= college.zip %></span></p>
+              <p class="description"><%= college.description %></p>
+              <p class="description"><%= college.years %></p>
+              <p class="years"><%= college.costAfterAid %></p>
+              <p class="years"><%= college.graduationRate %></p>
+              <p class="years"><%= college.acceptanceRate %></p>
+              <p class="sports"><%= college.sportingAffiliations %></p>
+              <hr>
+          
+        </div>
+        <% }) %> <% }else{ %>
+        <p>There is no college to show!!</p>
+        <% } %>
+    </div>
+    <a href="#" class="back-to-top">
+      <span class="material-icons"><i class="fa-solid fa-arrow-up"></i></span>
+  </a>
+  <%- include("../partials/footer.ejs")%>
+  </body>
+</html>

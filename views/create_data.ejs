@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/header.ejs")%>
+  <body>
+    <%- include("../partials/nav.ejs")%>
+    <h2>Update Form</h2>
+    <div class="create-resource content" id="update_form">
+      <form action="/update/<%= college._id %>" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= college.name %>" />
+        <label for="webpage">Webpage: </label>
+        <input type="text" id="webpage" name="webpage" value="<%= college.webpage %>" />
+        <label for="phone">Phone: </label>
+        <input type="text" id="phone" name="phone"  value="<%= college.phone %>"/>
+        <label for="Street">Street:</label>
+        <input type="text" id="street" name="street" value="<%= college.street %>" />
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"  value="<%= college.city %>"/>
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" value="<%= college.state %>" />
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" name="zip"  value="<%= college.zip %>"/>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="<%= college.description %>" />
+        <label for="years">Years:</label>
+        <div class="radio">
+          <input type="text" id="years" name="years" value="<%= college.years %>"/>
+        </div>
+        <label for="costAfterAid">Cost After Aid:</label>
+        <input type="text" id="costAfterAid" name="costAfterAid" value="<%= college.costAfterAid %>"/>
+        <label for="graduationRate">Graduation Rate:</label>
+        <input type="text" id="graduationRate" name="graduationRate" value="<%= college.graduationRate %>"/>
+        <label for="acceptanceRate">Acceptance Rate:</label>
+        <input type="text" id="acceptanceRate" name="acceptanceRate" value="<%= college.acceptanceRate %>"/>
+        <label for="sportingAffiliations">Sporting Affiliations:</label>
+        <input type="text" id="sportingAffiliations" name="sportingAffiliations"  value="<%= college.sportingAffiliations %>"/>
+        <button class="download-btn" type="submit">UPDATE INFO</button>
+      </form>
+    </div>
+    <a href="#" class="back-to-top">
+      <span class="material-icons"><i class="fa-solid fa-arrow-up"></i></span>
+  </a>
+  <%- include("../partials/footer.ejs")%>
+    <script>
+        // Clear form fields after successful submission
+        document.addEventListener("DOMContentLoaded", function () {
+          // clear the form
+          const form = document.getElementById("update_form");
+          form.reset(); 
+      
+          
+        });
+      </script>
+      
+  </body>
+</html>

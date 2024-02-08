@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <%- include("../partials/header.ejs")%>
+  <body>
+    <%- include("../partials/nav.ejs")%>
+    <h2>Show health</h2>
+    <div class="health content">
+      <h3 class="title">
+        <a href="http://www.<%= health.webpage %>"><%= health.name %></a>
+      </h3>
+
+      <p class="phone"><%= health.phone %></p>
+
+      <p class="street"><%= health.street %></p>
+      <p class="city">
+        <%= health.city %>, <span class="state"><%= health.state %></span>
+        <span class="zip"><%= health.zip %></span>
+      </p>
+      <p class="description"><%= health.description %></p>
+      <hr />
+      <a class="delete download-btn" data-health="<%= health._id %>">DELETE</a>
+    </div>
+    <a href="#" class="back-to-top">
+      <span class="material-icons"><i class="fa-solid fa-arrow-up"></i></span>
+  </a>
+  <%- include("../partials/footer.ejs")%>
+    <script>
+      const deleteBtn = document.querySelector(".delete");
+      deleteBtn.addEventListener("click", (e) => {
+        const endpoint = `/health/${deleteBtn.dataset.health}`;
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            response.json();
+          })
+          .then((data) => (window.location.href = "/health"))
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>
